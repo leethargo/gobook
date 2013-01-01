@@ -1,10 +1,10 @@
-pdfs := $(patsubst %.svg,%.pdf,$(wildcard *.svg))
+pngs := $(patsubst %.svg,%.png,$(wildcard *.svg))
 
-%.pdf: %.svg
-	inkscape --export-pdf=$@ $<
-	pdfcrop $@ output.pdf && mv output.pdf $@
+%.png: %.svg
+	inkscape --export-png=$@ $<
+#	pdfcrop $@ output.pdf && mv output.pdf $@
 
-all:	${pdfs}
+all:	${pngs}
 
 clean:  
-	rm -f *.pdf
+	rm -f *.png

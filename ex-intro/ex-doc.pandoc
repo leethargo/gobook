@@ -1,6 +1,6 @@
-# Exercises
+## Exercises
 
-## Q: Documentation [0]
+### Q: Documentation [0]
 
 Go's documentation can be read with the `go doc` program, which is
 included the Go distribution.
@@ -26,7 +26,7 @@ included the Go distribution.
 With which `go doc` command can you read the documentation of *fnv* contained in
 *hash*?
 
-### Answer
+#### Answer
 The package *fnv* is in a *subdirectory* of
 *hash*, so you will only need `go doc hash/fnv`.
 

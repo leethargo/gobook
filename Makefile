@@ -3,8 +3,8 @@
 
 all:	go.html
 
-go.html: go.pandoc preface.pandoc contributors.pandoc ex-*/*.pandoc
-	perl insert go.pandoc | pandoc -N --bibliography=go.bib -s -S -t html -o go.html
+go.html: *.pandoc ex-*/*.pandoc
+	perl insert go.pandoc | pandoc --toc --chapters -N --bibliography=go.bib -c go.css -s -S -t html5 -o go.html
 
 .fig:	fig/*.svg
 	( cd fig; make all )
@@ -18,16 +18,12 @@ clean:
 	rm -f go.lol go.aux *.log map.log go.pdf go.bbl go.blg go.toc go.ind go.lot go.lof go.loe
 	rm -f go.ilg go.idx go.lgpl missfont.log doc_data.txt go.ex .fig .tab
 	rm -f go.code
+	rm -f go.html
 
 distclean: clean
-	( cd fig; make clean )
-	( cd tab; make clean )
+	( rm .fig; cd fig; make clean )
+	( rm .tab; cd tab; make clean )
 	( cd src; make clean )
-
-spell:
-	for i in *.tex ex-*/*.tex; do aspell check $$i; done
-once:	
-	xelatex go.tex
 
 compilecheck:
 	@bin/go-lstinputlisting.pl ~/git/gobook   *.tex
