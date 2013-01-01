@@ -1,0 +1,20 @@
+sub insert($);
+
+while (<>) {
+    if (/^!Insert (.*)$/) {
+        insert $1;
+    }
+    print
+}
+
+sub insert($) {
+    $file = shift;
+    open F, "<", $file or die "Failed to open $file: $!";
+    while (<F>) {
+        if (/^!Insert (.*)$/) {
+            insert $1;
+        }
+        print;
+    }
+    close F;
+}

@@ -1,0 +1,67 @@
+% Learning Go 1
+% Miek Gieben
+% 2013
+
+<!-- ![Gopher](fig/bumper-inverse.png) -->
+<!-- version 1.0 -->
+
+With the help and contributions from (in alphabetical order):
+!Insert contributors.pandoc
+
+> This work is licensed under the Attribution-NonCommercial-ShareAlike
+> 3.0 Unported License. To view a copy of this license, visit
+> ttp://creativecommons.org/licenses/by-nc-sa/3.0/ or send a letter to
+> Creative Commons, 171 Second Street, Suite 300, San Francisco, California,
+> 94105, USA.
+
+**All example code used in this book is hereby put in the public domain.**
+
+"Learning Go" has been translated into:
+
+* Chinese, by Xing Xing, 这里是中文译本: http://www.mikespook.com/learning-go/
+
+Learning as we Go.
+
+#Preface
+!Insert preface.pandoc
+
+#Introduction
+!Insert intro.pandoc
+
+\chapter{Basics}
+\label{chap:basics}
+\input{go-basics.tex}
+
+\chapter{Functions}
+\label{chap:functions}
+\input{go-functions.tex}
+
+\chapter{Packages}
+\label{chap:packages}
+\input{go-packages.tex}
+
+\chapter{Beyond the basics}
+\label{chap:beyond}
+\input{go-beyond.tex}
+
+\chapter{Interfaces}
+\label{chap:interfaces}
+\input{go-interfaces.tex}
+
+\chapter{Concurrency}
+\label{chap:channels}
+\input{go-channels.tex}
+
+\chapter{Communication}
+\label{chap:communication}
+\input{go-communication.tex}
+
+%%\chapter{Miscellaneous}
+%%\label{chap:miscellaneous}
+%%\input{go-misc.tex}
+
+\appendix
+
+\chapter{Colophon}
+\input{go-colophon}
+-->
