@@ -4,7 +4,7 @@
 all:	go.html
 
 go.html: go.pandoc preface.pandoc contributors.pandoc ex-*/*.pandoc
-	perl insert go.pandoc | pandoc --bibliography=go.bib -s -S -t html -o go.html
+	perl insert go.pandoc | pandoc -N --bibliography=go.bib -s -S -t html -o go.html
 
 .fig:	fig/*.svg
 	( cd fig; make all )

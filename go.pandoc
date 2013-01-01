@@ -28,9 +28,8 @@ Learning as we Go.
 #Introduction
 !Insert intro.pandoc
 
-\chapter{Basics}
-\label{chap:basics}
-\input{go-basics.tex}
+#Basics
+!Insert basics.pandoc
 
 \chapter{Functions}
 \label{chap:functions}
