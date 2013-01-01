@@ -1,0 +1,9 @@
+### A: Documentation [0]
+The package *fnv* is in a *subdirectory* of
+*hash*, so you will only need `go doc hash/fnv`.
+
+Specific functions inside the "Go manual" can also be accessed. For
+instance the function `Printf` is described in *fmt*. To
+view the documentation for this function alone use: `go doc fmt Printf`.
+
+All the built-in functions are also accessible by using `go doc builtin`.

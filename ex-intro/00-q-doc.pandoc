@@ -1,5 +1,3 @@
-## Exercises
-
 ### Q: Documentation [0]
 
 Go's documentation can be read with the `go doc` program, which is
@@ -25,13 +23,3 @@ included the Go distribution.
 
 With which `go doc` command can you read the documentation of *fnv* contained in
 *hash*?
-
-#### Answer
-The package *fnv* is in a *subdirectory* of
-*hash*, so you will only need `go doc hash/fnv`.
-
-Specific functions inside the "Go manual" can also be accessed. For
-instance the function `Printf` is described in *fmt*. To
-view the documentation for this function alone use: `go doc fmt Printf`.
-
-All the built-in functions are also accessible by using `go doc builtin`.

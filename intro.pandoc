@@ -147,4 +147,8 @@ here for your convience.
 
         set PATH=\verb|%PATH%;C:\Go\bin|
 
-!Insert ex-intro/ex-doc.pandoc
+## Exercises
+!Exercises ex-intro
+
+## Answers
+!Answers ex-intro

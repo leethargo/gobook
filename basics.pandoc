@@ -102,13 +102,13 @@ Lets look at the program line by line.
     contain non-ASCII characters. Here we use Greek and Japanese.
 
 ## Compiling and running code
-The preferred way to build a Go program is to use the \prog{go} tool.\index{tooling!go}
-To build \prog{helloworld} we just enter:
+The preferred way to build a Go program is to use the `go` tool.\index{tooling!go}
+To build `helloworld` we just enter:
 \begin{display}
 \pr \user{go build helloworld.go}
 \end{display}
 \index{tooling!go!build}
-This results in an executable called \prog{helloworld}.
+This results in an executable called `helloworld`.
 
 \begin{display}
 \pr \user{./helloworld}
@@ -370,7 +370,7 @@ Go has a builtin type specially for errors, called `error`.
 
 `var e error` creates a variable \var{e} of type \lstinline{error} with the value \lstinline{nil}.
 
-\section{Operators and built-in functions}
+## Operators and built-in functions
 \label{sec:builtins}
 Go supports the normal set of numerical operators.
 Table \ref{tab:op-precedence}
@@ -401,7 +401,7 @@ operators *are* overloaded. For instance, \texttt{+} can be used for integers,
 floats, complex numbers and strings (adding strings is concatenating
 them). 
 
-\section{Go keywords}
+## Go keywords
 \begin{table}[H]
 \begin{center}
 \caption{Keywords in Go}
@@ -430,7 +430,7 @@ and \key{return} see chapter \ref{chap:functions} for the details;
 \item \key{type} also see chapter \ref{chap:beyond}.
 \end{itemize}
 
-\section{Control structures}
+## Control structures
 There are only a few control structures in 
 Go \footnote{This section is copied from [@effective_go].}.
 For instance there is no do or while loop, only a 
@@ -735,11 +735,11 @@ func Compare(a, b []byte) int {
 }
 \end{lstlisting}
 
-\section{Built-in functions}
+## Built-in functions
 A small number of functions are predefined, meaning 
 you *don't* have to include any package to get
 access to them. Table \ref{tab:predef-functions} lists them all.\footnote{You can use the
-command \prog{go doc builtin} to read the online documentation about the built-in types and functions.}
+command `go doc builtin` to read the online documentation about the built-in types and functions.}
 
 \begin{table}[H]
 \begin{center}
@@ -806,7 +806,7 @@ we gave, we will not further explain complex numbers.
 \index{built-in!imag}
 
 
-\section{Arrays, slices and maps}
+## Arrays, slices and maps
 \label{sec:arrays}
 Storing multiple values in a list can be done by utilizing arrays, or
 their more flexible cousin: slices. A dictionary or hash type is also
@@ -1033,7 +1033,7 @@ delete(monthdays, "Mar")           |\coderemark{Deletes "Mar", always rainy anyw
 In general the syntax `delete(m, x)` will delete the map entry
 retrieved by the expression `m[x]`.
 
-\section{Exercises}
+## Exercises
 \input{ex-basics/ex-for.tex}
 
 \input{ex-basics/ex-fizzbuzz.tex}
@@ -1042,6 +1042,4 @@ retrieved by the expression `m[x]`.
 
 \input{ex-basics/ex-average-no-func.tex}
 
-\cleardoublepage
-\section{Answers}
-\shipoutAnswer
+## Answers
