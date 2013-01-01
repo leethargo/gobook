@@ -75,14 +75,15 @@ I hope you will enjoy this book and the language Go.
 
 ##Settings used in this book
 
-* Go itself is installed in \file{\~{}/go}, and \var{\$GOROOT} is set to \var{GOROOT=\~{}/go} ;
-* Go source code we want to compile ourself is placed in \file{\~{}/g/src} and
-    \var{\$GOPATH} is set to \var{GOPATH=\~{}/g} .
+* Go itself is installed in `~/go`, and `$GOROOT` is set to `GOROOT=~/go` ;
+* Go source code we want to compile ourself is placed in `~/g/src` and
+    `$GOPATH` is set to `GOPATH=~/g` .
 
 ##Translations
 The content of this book is freely available. This has already led to translations:
 
 * Chinese translation by Xing Xing, 这里是中文译本:
-  http://www.mikespook.com/learning-go/
+  <http://www.mikespook.com/learning-go/>
 
-> Miek Gieben, 2011 - 2013 -- miek@miek.nl
+## Copyright
+Miek Gieben, 2011 - 2013 -- <miek@miek.nl>
