@@ -1018,28 +1018,33 @@ monthdays["Feb"]     = 29	|\coderemark{Overwrite entry - for leap years}|
 \end{lstlisting}
 To test for existence \index{keyword!map!existence}, you would use the
 following [@go_course_day2]:
-\begin{lstlisting}
+
+
+~~~ {.go}
 var value int
 var present bool
 
-value, present = monthdays["Jan"] |\coderemark{If exist, \texttt{present} has the value \key{true}}|
-                                  |\coderemark{Or better and more Go like}|
-v, ok := monthdays["Jan"]	  |\coderemark{Hence, the "comma ok" form}|
-\end{lstlisting}
+value, present = monthdays["Jan"] // If exist, present has the value true
+                                  // Or better and more Go like
+v, ok := monthdays["Jan"]         // Hence, the "comma ok" form
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 And finally you can remove elements \index{keyword!map!remove elements} from the \type{map}:
-\begin{lstlisting}
-delete(monthdays, "Mar")           |\coderemark{Deletes "Mar", always rainy anyway}|
-\end{lstlisting}
+
+~~~ {.go}
+delete(monthdays, "Mar")          // Deletes "Mar", always rainy anyway
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 In general the syntax `delete(m, x)` will delete the map entry
 retrieved by the expression `m[x]`.
 
 ## Exercises
+!Questions ex-basics
+
 \input{ex-basics/ex-for.tex}
-
 \input{ex-basics/ex-fizzbuzz.tex}
-
 \input{ex-basics/ex-strings.tex}
-
 \input{ex-basics/ex-average-no-func.tex}
 
 ## Answers
+!Answers ex-basics
