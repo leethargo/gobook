@@ -45,7 +45,7 @@ sub insert($) {
             questions $1;
         }
         if (/^!Answers (.*)$/) {
-            questions $1;
+            answers $1;
         }
         print;
     }
