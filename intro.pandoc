@@ -22,12 +22,9 @@ The following convention is used throughout this book
 
 * Code is displayed in a `monospace font`;
 * Keywords are displayed a `monospace font`;
-* Comments are displayed in *italics*
-* Extra remarks in the code \coderemark{Are displayed like this};
+* Comments (in code) are displayed in *italics*
 * Longer remarks get a number -- \gocircle{1} -- with the explanation following;
 * Shell examples use a `%` as prompt;
-* User entered text in shell examples \texttt{\user{is in bold}}, system responses
-are in a \texttt{typewriter font};
 
 ## Official documentation
 There is already a substantial amount of documentation written about Go.

@@ -9,12 +9,13 @@ while (<>) {
 
 sub insert($) {
     $file = shift;
-    open F, "<", $file or die "Failed to open $file: $!";
-    while (<F>) {
+    local $fh = <F>;
+    open $fh, "<", $file or die "Failed to open $file: $!";
+    while (<$fh>) {
         if (/^!Insert (.*)$/) {
             insert $1;
         }
         print;
     }
-    close F;
+    close $fh;
 }
