@@ -1,10 +1,36 @@
 sub insert($);
+sub questions($);
+sub answers($);
 
 while (<>) {
     if (/^!Insert (.*)$/) {
         insert $1;
     }
-    print
+    print;
+}
+
+sub questions($) {
+    my $dir = shift;
+    while (<$dir/[0-9][0-9]-q-*.pandoc>) {
+        print STDERR $_, "\n";
+        open Q, "<", $_;
+        while (<Q>) {
+            print;
+        }
+        close Q
+    }
+}
+
+sub answers($) {
+    my $dir = shift;
+    while (<$dir/[0-9][0-9]-a-*.pandoc>) {
+        print STDERR $_, "\n";
+        open A, "<", $_;
+        while (<A>) {
+            print;
+        }
+        close A
+    }
 }
 
 sub insert($) {
@@ -14,6 +40,12 @@ sub insert($) {
     while (<$fh>) {
         if (/^!Insert (.*)$/) {
             insert $1;
+        }
+        if (/^!Questions (.*)$/) {
+            questions $1;
+        }
+        if (/^!Answers (.*)$/) {
+            questions $1;
         }
         print;
     }
