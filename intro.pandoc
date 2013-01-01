@@ -40,12 +40,11 @@ for reading up on Go
 certainly not required, but it is recommended.
 
 Go 1 comes with its own documentation in the form of a program called 
-\prog{go doc}. If you are interested in the documentation
-for the built-ins (see ``\titleref{sec:builtins}'' in the next chapter) you
+`go doc`. If you are interested in the documentation
+for [the built-ins](#builtins) you
 can fire it up, like so:
-\begin{display}
-\pr \user{go doc builtin}
-\end{display}
+
+    % go doc builtin
 
 How to create your own package documentation is explained [in chapter](#packages).
 
@@ -85,8 +84,7 @@ by C. A. R. Hoare [@hoare], who incidentally is the same man that
 invented QuickSort [@quicksort].
 
 Go is the first C--like language that is widely available,
-runs on many
-different platforms and makes concurrency easy (or easier).
+runs on many different platforms and makes concurrency easy (or easier).
 
 ## Getting Go
 In this section we explain how to install Go locally on your machine, but you can
@@ -101,34 +99,31 @@ the package "golang").
 Here we will stick to the installation from source.
 So we will have to retrieve the code from the mercurial archive and compile
 Go yourself. For other Unix-like systems the procedure is the same.
-\begin{itemize}
-\item First install Mercurial (to get the \prog{hg} command). In
-Ubuntu/Debian/Fedora you must install the \prog{mercurial} package;
 
-\item For building Go you need the packages: \prog{bison},
-\prog{gcc}, \prog{libc6-dev}, \prog{ed}, \prog{gawk} and \prog{make};
+* First install Mercurial (to get the `hg` command). In
+    Ubuntu/Debian/Fedora you must install the `mercurial` package;
 
-\item Set the environment variable \prog{GOROOT} to the root of your
-Go install:
-\begin{display}
-\pr \user{export GOROOT=\~{}/go}
-\end{display}
+* For building Go you need the packages: 
+    `bison`, `gcc`, `libc6-dev`, `ed`, `gawk` and `make`;
 
-\item Then retrieve the latest release (= Go 1) source code:
-\begin{display}
-\pr \user{hg clone -r release https://go.googlecode.com/hg/ $GOROOT}
-\end{display}
+* Set the environment variable `GOROOT` to the root of your
+    Go install:
 
-\item Set your PATH to so that the shell can find the Go binaries:
-\begin{display}
-\pr \user{export PATH=$GOROOT/bin:$PATH}
-\end{display}
-\item Compile Go
-\begin{display}
-\pr \user{cd $GOROOT/src}
-\pr \user{./all.bash}
-\end{display}
-\end{itemize}
+    %export GOROOT=~/go
+
+* Then retrieve the latest release (= Go 1) source code:
+
+    % hg clone -r release https://go.googlecode.com/hg/ $GOROOT
+
+* Set your PATH to so that the shell can find the Go binaries:
+
+    % export PATH=$GOROOT/bin:$PATH
+
+* Compile Go:
+
+    % cd $GOROOT/src
+    % ./all.bash
+
 If all goes well, you should see the following at the end:
 
     --- cd ../test
@@ -142,19 +137,16 @@ If all goes well, you should see the following at the end:
 
 
 ## Getting Go for Windows
-The best way is to follow the instructions from \cite{go_install}, which are repeated
+The best way is to follow the instructions from [@go_install], which are repeated
 here for your convience.
 
-\begin{itemize}
-\item Download Go 1 from:
-\url{http://code.google.com/p/go/downloads/list?q=OpSys-Windows+Type%3DArchive};
-\item Unpack it to your \verb|C:\| drive;
-\item Make sure that the contents are \verb|C:\Go|. Note: this directory should be
-created when you unpacked the zip;
-\item Add \verb|C:\Go\bin| to your \$PATH:
-\begin{display}
-set PATH=\verb|%PATH%;C:\Go\bin|
-\end{display}
-\end{itemize}
+* Download Go 1 from:
+    <http://code.google.com/p/go/downloads/list?q=OpSys-Windows+Type%3DArchive>;
+* Unpack it to your `C:\` drive;
+* Make sure that the contents are `C:\Go`. Note: this directory should be
+    created when you unpacked the zip;
+* Add `C:\Go\bin` to your \$PATH:
+
+    set PATH=\verb|%PATH%;C:\Go\bin|
 
 !Insert ex-intro/ex-doc.pandoc

@@ -3,7 +3,7 @@
 
 all:	go.html
 
-go.html: *.pandoc ex-*/*.pandoc
+go.html: *.pandoc ex-*/*.pandoc .fig
 	perl insert go.pandoc | pandoc --toc --chapters -N --bibliography=go.bib -c go.css -s -S -t html5 -o go.html
 
 .fig:	fig/*.svg
