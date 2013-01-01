@@ -17,8 +17,8 @@ What is Go? From the website [-@go_web]:
 Go 1 is the first stable release of the language Go. 
 This document and all exercises work with Go 1 -- if not, it's a bug.
 
-The following convention is used throughout this book[^depends]:
-[^depends]: This of course depends to what output format it has been converted.
+The following convention is used throughout this book
+^[This of course depends to what output format it has been converted.]:
 
 * Code is displayed in a `monospace font`;
 * Keywords are displayed a `monospace font`;
@@ -36,7 +36,7 @@ The Go Tutorial [-@go_tutorial], and the Effective Go
 document [-@effective_go]. The
 website <http://golang.org/doc/> is a very good starting point
 for reading up on Go 
-^[<http://golang.org/doc/> itself is served by `godoc`.]. Reading these documents is
+^[The website <http://golang.org/doc/> itself is served by `godoc`.]. Reading these documents is
 certainly not required, but it is recommended.
 
 Go 1 comes with its own documentation in the form of a program called 
