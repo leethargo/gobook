@@ -28,7 +28,7 @@ of this particular assignment. This difficulty ranges from 0 to 2:
 
 After that comes the name of the exercise. For example:
 
-    Q: [1] A map function
+    Q: A map function [1]
 
 Introduces a question numbered of a level one difficulty, concerning a
 `map()`-function. The answers are included after the exercises.
