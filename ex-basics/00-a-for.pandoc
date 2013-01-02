@@ -2,8 +2,8 @@
 
 1. There are a multitude of possibilities, one of the solutions could be:
 
-~~~ {#Simple for loop .go .numberLines startFrom="1"} 
-!insert ex-basics/src/for.go
+~~~ {#loop .go .numberLines startFrom="1"} 
+!Insert ex-basics/src/for.go
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     % go run for.go
