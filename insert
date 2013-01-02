@@ -15,6 +15,9 @@ sub questions($) {
         print STDERR $_, "\n";
         open Q, "<", $_;
         while (<Q>) {
+            if (/^!Insert (.*)$/) {
+                insert $1;
+            }
             print;
         }
         close Q
@@ -27,6 +30,9 @@ sub answers($) {
         print STDERR $_, "\n";
         open A, "<", $_;
         while (<A>) {
+            if (/^!Insert (.*)$/) {
+                insert $1;
+            }
             print;
         }
         close A
