@@ -164,8 +164,8 @@ On the left we use the
 it. The code on the right uses \mbox{`:=`{ }} to do this in one
 step (this form may only be used *inside* functions).
 In that case the variable
-type is *deduced* from the value. A value of 15 indicates an \type{int},
-a value of \texttt{false} tells Go that the type should be \type{bool}. 
+type is *deduced* from the value. A value of 15 indicates an `int`,
+a value of \texttt{false} tells Go that the type should be `bool`. 
 Multiple `var` declarations may also be grouped; `const`
 and `import` also allow this. Note the use of parentheses:
 \begin{lstlisting}
@@ -176,7 +176,7 @@ var (
 \end{lstlisting}
 Multiple variables of the same type can also be declared on a
 single line: `var x, y int` makes `x` and \var{y} both
-\type{int} variables. You can also make use of \first{parallel
+`int` variables. You can also make use of \first{parallel
 assignment}{parallel assignment}:
 \begin{lstlisting}
 a, b := 20, 16
@@ -204,7 +204,7 @@ func main() {
 
 #### Boolean types
 A boolean type represents the set of boolean truth values denoted by the
-predeclared constants *true* and \emph{false}. The boolean type is \type{bool}.
+predeclared constants *true* and \emph{false}. The boolean type is `bool`.
 
 ### Error type
 
@@ -219,8 +219,8 @@ for `uint`.
 If you want to be explicit about the length you can have
 that too with `int32`, or `uint32`. The full
 list for (signed and unsigned) integers is
-\type{int8}, \type{int16}, \type{int32}, \type{int64} and
-\type{byte}, \type{uint8}, \type{uint16}, \type{uint32}, \type{uint64}.
+`int8`, `int16`, `int32`, `int64` and
+`byte`, `uint8`, `uint16`, `uint32`, `uint64`.
 With `byte` being an
 alias for `uint8`. For floating point values there is
 `float32` and `float64` (there is no `float` type). 
@@ -338,7 +338,7 @@ is composed of the *uninterpreted* characters between the quotes.
 `Rune` is an alias for int32. It is an UTF-8 encoded code point. When is this type useful? For instance,
 when iterating over characters in a string. You can loop over each byte (which is only equivalent to a character
 when strings are encoded in 8-bit ASCII, which they are *not* in Go!). So to get the actual characters you
-should use the \type{rune} type.
+should use the `rune` type.
 
 \subsection{Complex numbers}
 Go has native support for complex numbers. To
@@ -614,8 +614,8 @@ Consider this code: \index{keyword!range!on slices}
 list := []string{"a", "b", "c", "d", "e", "f"}     |\longremark{Create a %
 slice (see ``\titleref{sec:arrays}'' on page \pageref{sec:arrays}) of strings.}|
 for k, v := range list {	|\longremark{Use `range` to loop over them. %
-With each iteration `range` will return the index as an \type{int} and %
-the key as a \type{string}, starting with 0 and ``a''.}|
+With each iteration `range` will return the index as an `int` and %
+the key as a `string`, starting with 0 and ``a''.}|
     // do what you want with k and v \longremark{`k` will have the value 0\ldots5, and %
 `v` will loop through ``a''\ldots``f''.}
 }
@@ -627,7 +627,7 @@ will break out the individual Unicode characters
 \footnote{In the UTF-8 world characters are sometimes called \first{runes}{runes}. 
 Mostly, when people talk about
 characters, they mean 8 bit characters. As UTF-8 characters may be up to 32 bits the word
-rune is used. In this case the type of `char` is \type{rune}.} and their start position, by parsing the UTF-8.
+rune is used. In this case the type of `char` is `rune`.} and their start position, by parsing the UTF-8.
 The loop: \index{keyword!range!on maps}
 \begin{lstlisting}
 for pos, char := range "a|$\Phi{}$|x" {
@@ -646,7 +646,7 @@ Go's \first{`switch`}{keyword!switch} is very flexible. The expressions need
 not be
 constants or even integers; the cases are evaluated top to bottom until
 a match is found, and if the `switch` has no expression it switches on
-\type{true}. It's therefore possible -- and idiomatic -- to write an
+`true`. It's therefore possible -- and idiomatic -- to write an
 `if-else-if-else` chain as a `switch`.
 \begin{lstlisting}
 func unhex(c byte) byte {
@@ -741,65 +741,80 @@ Table: All the built-in functions in Go.
 
 These built-in functions are documented in the *builtin* \index{package!builtin} pseudo package.
 
-\`close`} is used in
-channel communication. It closes a channel, see chapter \ref{chap:channels}
-for more on this.
-\index{built-in!close}
+`close`
 
-\`delete`} is used for deleting entries in maps.
-\index{built-in!delete}
+:    is used in
+    channel communication. It closes a channel, see chapter \ref{chap:channels}
+    for more on this. \index{built-in!close}
 
-\`len` and `cap`} are used on a number of different
-types, `len` is
-used for returning the length of strings and the length of slices and
-arrays. See section ``\titleref{sec:arrays}'' for the details of slices and
-arrays and the function
-`cap`.\index{built-in!len}\index{built-in!cap}
+`delete`
 
-\`new`} is used for allocating memory for user defined
-data types. See section ``\titleref{sec:allocation with new}'' on page
-\pageref{sec:allocation with new}.
-\index{built-in!new}
+:    is used for deleting entries in maps.\index{built-in!delete}
 
-`make`} is used for allocating memory for built-in
-types (maps, slices and channels). See section 
-``\titleref{sec:allocation with make}'' on page
-\pageref{sec:allocation with make}.
-\index{built-in!make}
+`len` and `cap`
 
-`copy`} is used for copying slices. 
-See section ``\titleref{sec:slices}'' in this chapter.
-\index{built-in!copy}
+:    are used on a number of different types, `len` is
+    used for returning the length of strings and the length of slices and
+    arrays. See section ``\titleref{sec:arrays}'' for the details of slices and
+    arrays and the function
+    `cap`.\index{built-in!len}\index{built-in!cap}
 
-`append`} is for concatenating slices. 
-See section ``\titleref{sec:slices}'' in this chapter.
-\index{built-in!append}
+`new`
 
-`panic` and `recover`} are used for an 
-*exception* mechanism. See the section ``\titleref{sec:panic}'' on 
-page \pageref{sec:panic} for more.
-\index{built-in!panic}
-\index{built-in!recover}
+:    is used for allocating memory for user defined
+    data types. See section ``\titleref{sec:allocation with new}'' on page
+    \pageref{sec:allocation with new}.
+    \index{built-in!new}
 
-`print` and `println`} are low level printing
-functions that can be used without reverting to the
-*fmt*\index{package!fmt}
-package. These are mainly used for debugging.
-\index{built-in!print}\index{built-in!println}
+`make`
 
-`complex`, `real` and `imag`} all deal with
-\first{complex numbers}{complex numbers}. Apart from the simple example
-we gave, we will not further explain complex numbers.
-\index{built-in!complex}
-\index{built-in!real}
-\index{built-in!imag}
+:    is used for allocating memory for built-in
+    types (maps, slices and channels). See section 
+    ``\titleref{sec:allocation with make}'' on page
+    \pageref{sec:allocation with make}.
+    \index{built-in!make}
 
+`copy`
+
+:    is used for copying slices. 
+    See section ``\titleref{sec:slices}'' in this chapter.
+    \index{built-in!copy}
+
+`append`
+
+:    is for concatenating slices. 
+    See section ``\titleref{sec:slices}'' in this chapter.
+    \index{built-in!append}
+
+`panic` and `recover`
+
+:     are used for an 
+    *exception* mechanism. See the section ``\titleref{sec:panic}'' on 
+    page \pageref{sec:panic} for more.
+    \index{built-in!panic}
+    \index{built-in!recover}
+
+`print` and `println`
+
+:    are low level printing
+    functions that can be used without reverting to the
+    *fmt*\index{package!fmt}
+    package. These are mainly used for debugging.
+    \index{built-in!print}\index{built-in!println}
+
+`complex`, `real` and `imag`
+
+:    all deal with
+    \first{complex numbers}{complex numbers}. Apart from the simple example
+    we gave, we will not further explain complex numbers.
+    \index{built-in!complex}
+    \index{built-in!real}
+    \index{built-in!imag}
 
 ## Arrays, slices and maps
-\label{sec:arrays}
 Storing multiple values in a list can be done by utilizing arrays, or
 their more flexible cousin: slices. A dictionary or hash type is also
-available, it is called a \type{map} in Go.
+available, it is called a `map` in Go.
 
 \subsection{Arrays}
 An array is defined by: \verb|[n]<type>|, where $n$ is the length
@@ -969,9 +984,9 @@ n2 := copy(s, s[2:])    |\coderemark{\texttt{n2 == 4, s == []int\{2, 3, 4, 5, 4,
 Many other languages have a similar type built-in. For instance, Perl has hashes,
 Python has its dictionaries and C++ also has maps (as part of the libraries).
 In Go we have the
-\first{`map`}{keyword!map} type. A \type{map} can be thought of as an array indexed by
+\first{`map`}{keyword!map} type. A `map` can be thought of as an array indexed by
 strings (in its most simple form).
-In the following listing we define a \type{map} which converts from a
+In the following listing we define a `map` which converts from a
 `string` (month abbreviation) to an `int` -- the number of days in that month. 
 The generic way to define a map is with: \verb|map[<from type>]<to type>|
 
@@ -1000,7 +1015,7 @@ for _, days := range monthdays {    |\coderemark{Key is not used, hence \texttt{
 }
 fmt.Printf("Numbers of days in a year: %d\n", year)
 \end{lstlisting}
-Adding elements to the \type{map} \index{keyword!map!add elements} would be done as:
+Adding elements to the `map` \index{keyword!map!add elements} would be done as:
 \begin{lstlisting}
 monthdays["Undecim"] = 30	|\coderemark{Add a month}|
 monthdays["Feb"]     = 29	|\coderemark{Overwrite entry - for leap years}|
@@ -1018,7 +1033,7 @@ value, present = monthdays["Jan"] // If exist, present has the value true
 v, ok := monthdays["Jan"]         // Hence, the "comma ok" form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-And finally you can remove elements \index{keyword!map!remove elements} from the \type{map}:
+And finally you can remove elements \index{keyword!map!remove elements} from the `map`:
 
 ~~~ {.go}
 delete(monthdays, "Mar")          // Deletes "Mar", always rainy anyway
