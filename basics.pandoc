@@ -14,9 +14,8 @@ Concurrent
 
 :    Go makes it easy to "fire off" functions to be
     run as *very* lightweight threads. These threads are called
-    \first{goroutines}{goroutines} \footnote{Yes, that sounds a lot like
-    *co*routines, but goroutines are slightly different as we will
-    see in chapter \ref{chap:channels}.} in Go;
+    goroutines ^[Yes, that sounds a lot like *co*routines, but goroutines are slightly different as we will
+    see in [this chapter](#channels).] in Go;
 
 Channels
 
@@ -113,7 +112,6 @@ This results in an executable called `helloworld`.
     Hello, world; or こんにちは 世界
 
 ## Settings used in this book
-
 * Go itself is installed in `~/go`, and `$GOROOT` is set to `GOROOT=~/go` ;
 * Go source code we want to compile ourself is placed in `~/g/src` and
     `$GOPATH` is set to `GOPATH=~/g` . This variable comes into play
@@ -129,7 +127,7 @@ separated with a semicolon (';'). Normally you don't need the semicolon.
 Go is different from other languages in that the type of a variable
 is specified *after* the variable name. So not: 
 `int a`, but `a int`. When declaring a variable it
-is assigned the ``natural'' null value for the type. This means that after
+is assigned the "natural" null value for the type. This means that after
 `var a int`, `a` has a value of 0. With
 `var s string`, `s` is assigned the zero string,
 which is `""`. 
@@ -137,55 +135,46 @@ which is `""`.
 Declaring and assigning in Go is a two step process, but they may
 be combined. Compare the following pieces of code which have
 the same effect. 
-\index{variables!declaring}
-\index{variables!assigning}
 
-\begin{minipage}{.5\textwidth}
-~~~ {.go}[linewidth=.5\textwidth,caption={Declaration with =}]
+~~~ {.go}
 var a int
 var b bool
 a = 15
 b = false
-~~~
-\hfill
-\end{minipage}
-\begin{minipage}{.5\textwidth}
-~~~ {.go}[linewidth=.5\textwidth,caption={Declaration with :=}]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~ {.go}
 a := 15
 b := false
-~~~
-\ \\
-\ \\
-\hfill
-\end{minipage}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On the left we use the
+In the top code examples we use the
 `var` keyword to declare a variable and *then* assign a value to
-it. The code on the right uses `:=` to do this in one
+it. The bottom example uses `:=` to do this in one
 step (this form may only be used *inside* functions).
 In that case the variable
 type is *deduced* from the value. A value of 15 indicates an `int`,
 a value of `false` tells Go that the type should be `bool`. 
 Multiple `var` declarations may also be grouped; `const`
 and `import` also allow this. Note the use of parentheses:
+
 ~~~ {.go}
-var (
-    x int
-    b bool
+var (           // equivalent to:
+    x int       // var x int
+    b bool      // var b bool
 )
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Multiple variables of the same type can also be declared on a
-single line: `var x, y int` makes `x` and \var{y} both
-`int` variables. You can also make use of \first{parallel
-assignment}{parallel assignment}:
+single line: `var x, y int` makes `x` and `y` both
+`int` variables. You can also make use of parallel assignment:
 
 ~~~ {.go}
 a, b := 20, 16
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Which makes `a` and \var{b} both integer variables and assigns
-20 to `a` and 16 to \var{b}.
+Which makes `a` and `b` both integer variables and assigns
+20 to `a` and 16 to `b`.
 
 A special name for a variable is `\textbf{\_`} \index{variables!\_}
 (underscore)\index{variables!underscore}. Any value
@@ -212,6 +201,7 @@ A boolean type represents the set of boolean truth values denoted by the
 predeclared constants *true* and *false*. The boolean type is `bool`.
 
 ### Error type
+TODO(mg)
 
 ### Numerical types
 Go has the well known types such as `int`. This type
@@ -248,7 +238,7 @@ The assigned values may be denoted using octal, hexadecimal or the scientific no
 Constants in Go are just that --- constant. They are created at compile
 time, and can only be numbers, strings or booleans;
 `const x = 42` makes `x` a constant. You can use `iota`
-\first{`iota`}{keyword!iota} ^[The word [iota] is used in a common English phrase,
+^[The word [iota] is used in a common English phrase,
 'not one iota', meaning 'not the slightest difference', in reference to
 a phrase in the New Testament: "*until heaven and earth pass away, not an
 iota, not a dot, will pass from the Law*." [@iota]]
@@ -280,7 +270,7 @@ const (
 )
 ~~~
 
-\subsection{Strings}
+### Strings
 Another important built-in type is `string`. Assigning a
 string is as simple as:
 ~~~ {.go}
@@ -340,19 +330,19 @@ Unlike *interpreted* string literals \index{string literal!interpreted} the valu
 is composed of the *uninterpreted* characters between the quotes.
 \end{lbar}
 
-\subsection{Runes}
+### Runes
 `Rune` is an alias for int32. It is an UTF-8 encoded code point. When is this type useful? For instance,
 when iterating over characters in a string. You can loop over each byte (which is only equivalent to a character
 when strings are encoded in 8-bit ASCII, which they are *not* in Go!). So to get the actual characters you
 should use the `rune` type.
 
-\subsection{Complex numbers}
+### Complex numbers
 Go has native support for complex numbers. To
 use them you need a variable of type `complex128` (64
 bit real and imaginary parts) or `complex64` (32 bit
 real and imaginary parts).
 Complex numbers are written as
-`re + im$i$`, where \var{re} is the real part,
+`re + im$i$`, where `re` is the real part,
 `im` is the imaginary part and $i$ is the literal '$i$' ($\sqrt{-1}$).
 An example of using complex numbers:
 
@@ -360,7 +350,7 @@ An example of using complex numbers:
 `var c complex64 = 5+5i; fmt.Printf("Value is: %v", c)`\newline
 will print: `(5+5i)`
 
-\subsection{Errors}
+### Errors
 Any non-trivial program will have the need for error reporting sooner or later. Because of this
 Go has a builtin type specially for errors, called `error`.
 
@@ -383,17 +373,17 @@ all associate from left to right.
 \verb|+ - * /| and \verb|%| all do what you would expect,
 \verb!& | ^!
 and \verb!&^! are bit operators for
-\first{bitwise and}{operator!bitwise!and}, 
-\first{bitwise or}{operator!bitwise!or}, \first{bitwise xor}{operator!bit
-wise xor} and \first{bit clear}{operator!bitwise!clear} respectively.
-The \verb|&&| and \verb/||/ operators are 
-logical \first{and}{operator!and} and
-logical \first{or}{operator!or}. Not listed in the table
-is the logical \first{not}{operator!not}: \verb/!/
+bitwise and,
+bitwise or, bitwise xor
+and bit clear respectively.
+The `&&` and `||` operators are 
+logical and and
+logical or. Not listed in the table
+is the logical not: `!`
 
 Although Go does not support operator overloading (or method
 overloading for that matter), some of the built-in
-operators *are* overloaded. For instance, \texttt{+} can be used for integers,
+operators *are* overloaded. For instance, `+` can be used for integers,
 floats, complex numbers and strings (adding strings is concatenating
 them). 
 
@@ -428,7 +418,7 @@ and `return` see chapter \ref{chap:functions} for the details;
 
 ## Control structures
 There are only a few control structures in 
-Go \footnote{This section is copied from [@effective_go].}.
+Go ^[This section is copied from [@effective_go].].
 For instance there is no do or while loop, only a 
 `for`. There is a (flexible) `switch` statement and `if` and
 `switch` accept an
@@ -438,33 +428,35 @@ multiplexer, `select` (see chapter \ref{chap:channels}). The syntax is
 different (from that in C): parentheses
 are not required and the body must *always* be brace-delimited.
 
-\subsection{If-else}
-In Go an \first{`if`}{keyword!if} looks like this:
+### If-else
+In Go an `if` looks like this:
+
 ~~~ {.go}
-if x > 0 {	|\coderemark{\{ is mandatory}|
+if x > 0 {	// the { is mandatory
     return y
 } else {
     return x
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Mandatory braces encourage writing simple `if` statements on multiple
 lines. It is good style to do so anyway, especially when the body
 contains a control statement such as a
-\first{`return`}{keyword!return} or
-\first{`break`}{keyword!break}.
+`return` or `break`.
 
 Since `if` and `switch` accept an initialization statement, it's common to
 see one used to set up a (local) variable.
+
 ~~~ {.go}
-if err := file.Chmod(0664); err != nil {  |\coderemark{\texttt{nil} is %
-like C's NULL}|
-    fmt.Printf(err) |\coderemark{Scope of `err` is limited to %
-`if`'s body}|
+if err := file.Chmod(0664); err != nil {  // nil is like C's NULL
+    fmt.Printf(err) // Scope of err is limited to if's body
     return err
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 You can use the logical operators (see table \ref{tab:op-precedence}) as
 you would normally:
+
 ~~~ {.go}
 if true && true  {
     fmt.Println("true")
@@ -526,7 +518,7 @@ It will not compile. This is a bug in the Go compiler. See
 hopefully a fix.
 \end{lbar}
 
-\subsection{Goto}
+### Goto
 Go has a \first{`goto`}{keyword!goto} statement --- use it wisely. With `goto`
 you jump to a \index{label} label which must be defined within the current function.
 For instance, a loop in disguise:
@@ -541,7 +533,7 @@ Here:	   |\coderemark{First word on a line ending with a colon is a label}|
 ~~~
 The name of the label is case sensitive.
 
-\subsection{For}
+### For
 \label{sec:for}
 The Go \first{`for`}{keyword!for} loop has three forms, only one of
 which has semicolons.
@@ -569,7 +561,7 @@ for i, j := 0, len(a)-1; i < j; i, j = i+1, j-1 { |\coderemark{Parallel assignme
 }
 ~~~
 
-\subsection{Break and continue}
+### Break and continue
 With \first{`break`}{keyword!break} you can quit loops early.  By itself, `break` breaks
 the current loop.
 ~~~ {.go}
@@ -586,7 +578,7 @@ Making the label identify *which* loop to stop:
 J:  for j := 0; j < 5; j++ {
 	for i := 0; i < 10; i++ {
 	    if i > 5 { 
-		break J	|\coderemark{Now it breaks the `j`-loop, not the \var{i} one}|
+		break J	|\coderemark{Now it breaks the `j`-loop, not the `i` one}|
 	    }
 	    println(i)
 	}
@@ -605,7 +597,7 @@ for i := 0; i < 10; i++ {
 }
 ~~~
 
-\subsection{Range}
+### Range
 The keyword \first{`range`}{keyword!range} can be used for loops. It
 can loop over slices, arrays, strings, maps and channels (see chapter
 \ref{chap:channels}). `range` is
@@ -647,7 +639,7 @@ character '\begin{math}\Phi\end{math}' starts at byte position 1
 character 'x' starts at byte position 3 \coderemark{\begin{math}\Phi\end{math} took 2 bytes}
 \end{display}
 
-\subsection{Switch}
+### Switch
 Go's \first{`switch`}{keyword!switch} is very flexible. The expressions need
 not be
 constants or even integers; the cases are evaluated top to bottom until
