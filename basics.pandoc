@@ -622,16 +622,18 @@ the key as a `string`, starting with 0 and ``a''.}|
 
 You can also use `range` on strings directly. Then it
 will break out the individual Unicode characters 
-\footnote{In the UTF-8 world characters are sometimes called \first{runes}{runes}. 
+^[In the UTF-8 world characters are sometimes called \first{runes}{runes}. 
 Mostly, when people talk about
 characters, they mean 8 bit characters. As UTF-8 characters may be up to 32 bits the word
-rune is used. In this case the type of `char` is `rune`.} and their start position, by parsing the UTF-8.
-The loop: \index{keyword!range!on maps}
+rune is used. In this case the type of `char` is `rune`.] and their start position, by parsing the UTF-8.
+The loop:
+
 ~~~ {.go}
-for pos, char := range "a|$\Phi{}$|x" {
+for pos, char := range "aϕx" {
     fmt.Printf("character '%c' starts at byte position %d\n", char, pos)
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 prints
 \begin{display}
 character 'a' starts at byte position 0
@@ -640,12 +642,13 @@ character 'x' starts at byte position 3 \coderemark{\begin{math}\Phi\end{math} t
 \end{display}
 
 ### Switch
-Go's \first{`switch`}{keyword!switch} is very flexible. The expressions need
+Go's `switch` is very flexible. The expressions need
 not be
 constants or even integers; the cases are evaluated top to bottom until
 a match is found, and if the `switch` has no expression it switches on
 `true`. It's therefore possible -- and idiomatic -- to write an
 `if-else-if-else` chain as a `switch`.
+
 ~~~ {.go}
 func unhex(c byte) byte {
     switch {
@@ -658,27 +661,34 @@ func unhex(c byte) byte {
     }
     return 0
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 There is no automatic fall through, you can however use
-\first{`fallthrough`}{keyword!fallthrough} to do just that.
+`fallthrough` to do just that.
 Without `fallthrough`:
+
 ~~~ {.go}
 switch i {
     case 0:  // empty case body
     case 1:
 	f()  // f is not called when i == 0!
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 And with:
+
 ~~~ {.go}
 switch i {
     case 0:  fallthrough
     case 1:
 	f()  // f is called when i == 0!
 }
-~~~
-With \first{`default`}{keyword!default} you can specify an action
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With `default` you can specify an action
 when none of the other cases match.
+
 ~~~ {.go}
 switch i {
     case 0:  
@@ -687,8 +697,10 @@ switch i {
     default:	
 	g()	// called when i is not 0 or 1
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Cases can be presented in comma-separated lists.
+
 ~~~ {.go}
 func shouldEscape(c byte) bool {
     switch c {
@@ -697,11 +709,12 @@ func shouldEscape(c byte) bool {
     }
     return false
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Here's a comparison routine for byte arrays that uses two `switch` statements:
+
 ~~~ {.go}
-// Compare returns an integer comparing the two byte arrays
-// lexicographically.
+// Compare returns an integer comparing the two byte arrays lexicographically.
 // The result will be 0 if a == b, -1 if a < b, and +1 if a > b
 func Compare(a, b []byte) int {
     for i := 0; i < len(a) && i < len(b); i++ {
@@ -721,13 +734,12 @@ func Compare(a, b []byte) int {
     }
     return 0	// Strings are equal
 }
-~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Built-in functions
 A small number of functions are predefined, meaning 
 you *don't* have to include any package to get
-access to them. Table \ref{tab:predef-functions} lists them all.\footnote{You can use the
-command `go doc builtin` to read the online documentation about the built-in types and functions.}
+access to them. The table below lists them all.^[You can use the command `go doc builtin` to read the online documentation about the built-in types and functions.]
 
 --------   --------  ---------  ---------
 `close`	   `new`     `panic`	`complex`
@@ -737,77 +749,66 @@ command `go doc builtin` to read the online documentation about the built-in typ
 --------   --------  ---------  ---------
 Table: All the built-in functions in Go. 
 
-These built-in functions are documented in the *builtin* \index{package!builtin} pseudo package.
+These built-in functions are documented in the *builtin* pseudo package.
 
 `close`
 
 :    is used in
     channel communication. It closes a channel, see chapter \ref{chap:channels}
-    for more on this. \index{built-in!close}
+    for more on this.
 
 `delete`
 
-:    is used for deleting entries in maps.\index{built-in!delete}
+:    is used for deleting entries in maps.
 
 `len` and `cap`
 
 :    are used on a number of different types, `len` is
     used for returning the length of strings and the length of slices and
-    arrays. See section ``\titleref{sec:arrays}'' for the details of slices and
+    arrays. See section \titleref{sec:arrays} for the details of slices and
     arrays and the function
-    `cap`.\index{built-in!len}\index{built-in!cap}
+    `cap`.
 
 `new`
 
 :    is used for allocating memory for user defined
-    data types. See section ``\titleref{sec:allocation with new}'' on page
+    data types. See section \titleref{sec:allocation with new} on page
     \pageref{sec:allocation with new}.
-    \index{built-in!new}
 
 `make`
 
 :    is used for allocating memory for built-in
     types (maps, slices and channels). See section 
-    ``\titleref{sec:allocation with make}'' on page
+    \titleref{sec:allocation with make} on page
     \pageref{sec:allocation with make}.
-    \index{built-in!make}
 
 `copy`
 
 :    is used for copying slices. 
     See section ``\titleref{sec:slices}'' in this chapter.
-    \index{built-in!copy}
 
 `append`
 
 :    is for concatenating slices. 
     See section ``\titleref{sec:slices}'' in this chapter.
-    \index{built-in!append}
 
 `panic` and `recover`
 
 :     are used for an 
-    *exception* mechanism. See the section ``\titleref{sec:panic}'' on 
+    *exception* mechanism. See the section \titleref{sec:panic} on 
     page \pageref{sec:panic} for more.
-    \index{built-in!panic}
-    \index{built-in!recover}
 
 `print` and `println`
 
 :    are low level printing
     functions that can be used without reverting to the
-    *fmt*\index{package!fmt}
-    package. These are mainly used for debugging.
-    \index{built-in!print}\index{built-in!println}
+    *fmt* package. These are mainly used for debugging.
 
 `complex`, `real` and `imag`
 
 :    all deal with
-    \first{complex numbers}{complex numbers}. Apart from the simple example
+    complex numbers. Apart from the simple example
     we gave, we will not further explain complex numbers.
-    \index{built-in!complex}
-    \index{built-in!real}
-    \index{built-in!imag}
 
 ## Arrays, slices and maps
 Storing multiple values in a list can be done by utilizing arrays, or
@@ -815,8 +816,8 @@ their more flexible cousin: slices. A dictionary or hash type is also
 available, it is called a `map` in Go.
 
 ### Arrays
-An array is defined by: \verb|[n]<type>|, where $n$ is the length
-of the array and \verb|<type>| is the stuff you want to store.
+An array is defined by: `[n]<type>`, where $n$ is the length
+of the array and `<type>` is the stuff you want to store.
 Assigning or indexing an element in the array is done with square
 brackets:
 ~~~ {.go}
@@ -833,15 +834,14 @@ are values: Assigning one array to another *copies* all the elements.
 In particular, if you pass an array to a function it will receive a
 copy of the array, not a pointer to it. 
 
-\index{array!multidimensional}
 To declare an array you can use the following: `var a [3]int`,
 to initialize it to something other than zero use a
-\first{composite literal}{literal!composite}: \lstinline|a := [3]int{1, 2, 3}|.
-This can be shortened to \lstinline|a := [...]int{1, 2, 3}|, where Go counts
-the elements automatically. \gomarginpar{A composite literal allows you
+composite literal: `a := [3]int{1, 2, 3}`.
+This can be shortened to `a := [...]int{1, 2, 3}`, where Go counts
+the elements automatically. A composite literal allows you
 to assign a value directly to an array, slice or map.
 
-See the section ``\titleref{sec:constructors and composite literals}'' on
+See the section \titleref{sec:constructors and composite literals} on
 page \pageref{sec:constructors and composite literals} for more.}
 Note that all fields must be specified.  So if you are using multidimensional
 arrays you have to do quite some typing:
@@ -857,10 +857,9 @@ a := [2][2]int{ [...]int{1,2}, [...]int{3,4} }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When declaring arrays you *always* have to type something in
-between the square brackets, either a number or three dots (\verb|...|)
+between the square brackets, either a number or three dots (`...`)
 when using a composite literal. 
-\gomarginpar{Go release \gorelease{2010-10-27} [@go_release_hist].} 
-Since release \gorelease{2010-10-27} this syntax was further simplified.
+Since release 2010-10-27 [@go_release_hist] this syntax was further simplified.
 From the release notes:
 
 > The syntax for arrays, slices, and maps of composite literals has been
@@ -875,13 +874,14 @@ a := [2][2]int{ {1,2}, {3,4} }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Slices
-\todo{Add push/pop to this section as container/vector will be deprecated.}
+TODO(Add push/pop to this section as container/vector will be deprecated.)
+
 A slice is similar to an array, but it can grow when new elements
 are added.
 A slice always refers to an underlying array. What makes slices different
 from
 arrays is that a slice is a pointer *to* an array;
-slices are \first{reference types}{reference types}, 
+slices are reference types,
 ^[Reference types are created with `make`.]
 which means that if you assign one slice to
 another, both refer to the same underlying array. For instance, if a
@@ -899,16 +899,16 @@ A slice is always coupled to an array that has
 a fixed size. For slices we define a \first{capacity}{slice!capacity} and a
 \first{length}{slice!length}. \index{array!length}\index{array!capacity}
 Figure \ref{fig:array-vs-slice} depicts the following Go code.
-First we create an array of $m$ elements of the type `int`:
-`var array[m]int`\newline
-Next, we create a slice from this array:
-`slice := array[0:n]`\newline
+First we create an array of $m$ elements of the type `int`: `var array[m]int`
+
+Next, we create a slice from this array: `slice := array[0:n]`
+
 And now we have:
-\begin{itemize}
-\item{`len(slice) == n`{} ;}
-\item{`cap(slice) == m`{} ;}
-\item{`len(array) == cap(array) == m`{} .}
-\end{itemize}
+
+* `len(slice) == n` ; 
+* `cap(slice) == m` ;
+* `len(array) == cap(array) == m` .
+
 \begin{figure}[H]
 \caption{Array versus slice}
 \label{fig:array-vs-slice}
@@ -948,26 +948,23 @@ we are greeted with a *runtime* error.
 If you want to extend a slice, there are a couple of built-in functions
 that make life easier:
 `append` and `copy`. From [@go_spec]:
-\begin{quote}
-The function `append` appends zero or more values `x` to a
-slice `s` and returns the resulting slice, with the same type as
-`s`.
-If the capacity of `s` is not large enough to fit the additional values,
-`append` allocates a new, sufficiently large slice that fits both the
-existing slice elements and the additional values. Thus, the returned
-slice may refer to a different underlying array.
-\end{quote}
-\index{built-in!append}
+
+> The function `append` appends zero or more values `x` to a
+> slice `s` and returns the resulting slice, with the same type as
+> `s`.
+> If the capacity of `s` is not large enough to fit the additional values,
+> `append` allocates a new, sufficiently large slice that fits both the
+> existing slice elements and the additional values. Thus, the returned
+> slice may refer to a different underlying array.
+
 ~~~ {.go}
 s0 := []int{0, 0}
-s1 := append(s0, 2)       |\longremark{append a single element, \texttt{s1 == []int\{0, 0, 2\}};}|
-s2 := append(s1, 3, 5, 7) |\longremark{append multiple elements, %% 
-\texttt{s2 == []int\{0, 0, 2, 3, 5, 7\}};}|
-s3 := append(s2, s0...)   |\longremark{append a slice, \texttt{s3 == []int\{0, 0, 2, 3, 5, 7, 0, 0\}}. %%
-Note the three dots!}|
+s1 := append(s0, 2)       // append a single element, s1 == []int{0, 0, 2}
+s2 := append(s1, 3, 5, 7) // append multiple elements, s2 == []int{0, 0, 2, 3, 5, 7}
+s3 := append(s2, s0...)   // append a slice, s3 == []int{0, 0, 2, 3, 5, 7, 0, 0}
+                          // note the three dots for s0!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~
-\showremarks
+
 And
 
 > The function `copy` copies slice elements from a source
@@ -975,8 +972,6 @@ And
 > destination `dst` and returns the number of elements copied. Source and
 > destination may overlap. The number of elements
 > copied is the minimum of `len(src)` and `len(dst)`.
-
-\index{built-in!copy}
 
 ~~~ {.go}
 var a = [...]int{0, 1, 2, 3, 4, 5, 6, 7}
@@ -989,18 +984,18 @@ n2 := copy(s, s[2:])    // n2 == 4, s == []int{2, 3, 4, 5, 4, 5}
 Many other languages have a similar type built-in. For instance, Perl has hashes,
 Python has its dictionaries and C++ also has maps (as part of the libraries).
 In Go we have the
-\first{`map`}{keyword!map} type. A `map` can be thought of as an array indexed by
+`map` type. A `map` can be thought of as an array indexed by
 strings (in its most simple form).
 In the following listing we define a `map` which converts from a
 `string` (month abbreviation) to an `int` -- the number of days in that month. 
-The generic way to define a map is with: \verb|map[<from type>]<to type>|
+The generic way to define a map is with: `map[<from type>]<to type>`
 
 ~~~ {.go}
 monthdays := map[string]int{
 	"Jan": 31, "Feb": 28, "Mar": 31, 
 	"Apr": 30, "May": 31, "Jun": 30, 
 	"Jul": 31, "Aug": 31, "Sep": 30, 
-	"Oct": 31, "Nov": 30, "Dec": 31, // The comma here is required
+	"Oct": 31, "Nov": 30, "Dec": 31, // The comma here is required!
 }		    
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1011,9 +1006,8 @@ suppose we want to print the
 number of days in December: `fmt.Printf("%d\n", monthdays["Dec"])`
 
 If you are looping over an array, slice, string, or map a
-\first{`range`}{keyword!range}
-clause will help you again, which returns the key and corresponding value
-with each invocation.\index{keyword!range!on maps}
+`range` clause will help you again, which returns the key and corresponding value
+with each invocation.
 
 ~~~ {.go}
 year := 0
@@ -1023,17 +1017,14 @@ for _, days := range monthdays {    // Key is not used, hence "_, days"
 fmt.Printf("Numbers of days in a year: %d\n", year)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Adding elements to the `map` \index{keyword!map!add elements} would be done as:
+Adding elements to the `map` would be done as:
 
 ~~~ {.go}
 monthdays["Undecim"] = 30	// Add a month
 monthdays["Feb"]     = 29	// Overwrite entry - for leap years
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-To test for existence \index{keyword!map!existence}, you would use the
-following [@go_course_day2]:
-
+To test for existence, you would use the following [@go_course_day2]:
 
 ~~~ {.go}
 var value int
@@ -1044,7 +1035,7 @@ value, present = monthdays["Jan"] // If exist, present has the value true
 v, ok := monthdays["Jan"]         // Hence, the "comma ok" form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-And finally you can remove elements \index{keyword!map!remove elements} from the `map`:
+And finally you can remove elements from the `map`:
 
 ~~~ {.go}
 delete(monthdays, "Mar")          // Deletes "Mar", always rainy anyway
