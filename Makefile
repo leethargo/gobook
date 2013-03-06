@@ -1,6 +1,6 @@
 .PHONY: once spell compilecheck fmtcheck
 
-all:	go.pdf
+all:	go-kindle.pdf
 
 go.pdf: go_a4.tex go-*.tex ex-*/*.tex src/*.go tab/*.tex fig/*.tex blocksbook.cls go.bib .fig .tab about-*.tex
 	rm -f go.tex && ln -s go_a4.tex go.tex
