@@ -24,8 +24,8 @@
 %%\renewcommand{\lstlistlistingname}{List of Code Examples}
 %% toc
 \renewcommand{\tocheadstart}{}
-\renewcommand{\aftertoctitle}{\pagestyle{blocks}}
-\renewcommand{\aftertoctitle}{\thispagestyle{empty}\afterchaptertitle\pagestyle{blocks}}
+\renewcommand{\aftertoctitle}{\pagestyle{empty}}
+\renewcommand{\aftertoctitle}{\thispagestyle{empty}\afterchaptertitle\pagestyle{empty}}
 
 %%\renewcommand{\printtoctitle}[1]{}
 \renewcommand{\contentsname}{Contents}
@@ -34,24 +34,24 @@
 %% why the page is headerless. the page style is empty
 %% lof
 \renewcommand{\lofheadstart}{}
-\renewcommand{\afterloftitle}{\thispagestyle{blocks}}
+\renewcommand{\afterloftitle}{\thispagestyle{empty}}
 \renewcommand{\printloftitle}[1]{\section*{#1}}
 \renewcommand{\lotmark}{\markboth{\myfamily \typename:
 \contentsname}{\myfamily \listfigurename}}
 %% lot
 \renewcommand{\lotheadstart}{}
-\renewcommand{\afterlottitle}{\thispagestyle{blocks}}
+\renewcommand{\afterlottitle}{\thispagestyle{empty}}
 \renewcommand{\printlottitle}[1]{\section*{#1}}
 \renewcommand{\lofmark}{\markboth{\myfamily \typename:
 \contentsname}{\myfamily \listtablename}}
 %% ex
 \renewcommand{\exheadstart}{}
-\renewcommand{\afterextitle}{\thispagestyle{blocks}}
+\renewcommand{\afterextitle}{\thispagestyle{empty}}
 \renewcommand{\printextitle}[1]{\section*{#1}}
 \renewcommand{\exmark}{\markboth{\myfamily \typename: \contentsname}{\myfamily List of Exercises}}
 %% code
 \renewcommand{\codeheadstart}{}
-\renewcommand{\aftercodetitle}{\thispagestyle{blocks}}
+\renewcommand{\aftercodetitle}{\thispagestyle{empty}}
 \renewcommand{\printcodetitle}[1]{\section*{#1}}
 \renewcommand{\codemark}{\markboth{\myfamily \typename: \contentsname}{\myfamily List of Code Examples}}
 

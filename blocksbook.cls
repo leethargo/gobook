@@ -243,6 +243,6 @@
 %% set the options for the document
 \captiontitlefont{\small\myfamily}  %% small? TODO
 \captionnamefont{\myfamily}
-\pagestyle{blocks}
-\chapterstyle{blocks}
+\pagestyle{empty}
+\chapterstyle{empty}
 \aliaspagestyle{title}{tblocks}
